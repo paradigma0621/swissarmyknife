@@ -18,9 +18,7 @@ import javafx.util.Duration;
 import paradigma0621.swissarmyknife.api.Comunicando;
 import paradigma0621.swissarmyknife.api.ToolPlugin;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.ServiceLoader;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class MainController {
@@ -63,10 +61,25 @@ public class MainController {
         }
         System.out.println("[PLUGIN] total=" + count);
 
-        // popula mapas e fábricas lazy
         ServiceLoader<ToolPlugin> loader = ServiceLoader.load(ToolPlugin.class);
+        List<ToolPlugin> plugins = new ArrayList<>();
         for (ToolPlugin p : loader) {
-            System.out.println("Está no p.sayHelloFromToolPlugin(): " + p.sayHelloFromToolPlugin());
+            plugins.add(p);
+        }
+
+        // Ordem fixa:
+        List<String> pluginsOrder = List.of(
+                "clipboard",
+                "comparator",
+                "scratch"
+        );
+
+        plugins.sort(Comparator.comparingInt(p ->
+                pluginsOrder.indexOf(p.id()) >= 0 ? pluginsOrder.indexOf(p.id()) : Integer.MAX_VALUE
+        ));
+
+        // Agora popula seus mapas normalmente
+        for (ToolPlugin p : plugins) {
             pluginsById.put(p.id(), p);
             lazyFactories.put(p.id(), () -> {
                 try { return p.createView(); }
@@ -98,7 +111,12 @@ public class MainController {
             if (newScene != null) {
                 newScene.getAccelerators().put(
                         new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN),
-                        this::openFirstItem // abre o primeiro item da lista
+                        this::openClipboardItem
+                );
+
+                newScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN),
+                        this::openScratchItem
                 );
             }
         });
@@ -144,10 +162,42 @@ public class MainController {
         tabs.getSelectionModel().select(tab);
     }
 
-    // abre o primeiro item da lista (ex.: clipboard) e o seleciona
-    private void openFirstItem() {
-        if (list.getItems().isEmpty()) return;
-        list.getSelectionModel().select(0);
+    private void openClipboardItem() {
+        // queremos abrir especificamente o plugin "clipboard"
+        String targetId = "clipboard";
+
+        ToolEntry target = list.getItems()
+                .stream()
+                .filter(e -> e.id().equalsIgnoreCase(targetId))
+                .findFirst()
+                .orElse(null);
+
+        if (target == null) {
+            System.err.println("Plugin '" + targetId + "' não encontrado na lista.");
+            return;
+        }
+
+        list.getSelectionModel().select(target);
+        openSelected();
+    }
+
+
+    private void openScratchItem() {
+        // queremos abrir especificamente o plugin "clipboard"
+        String targetId = "scratch";
+
+        ToolEntry target = list.getItems()
+                .stream()
+                .filter(e -> e.id().equalsIgnoreCase(targetId))
+                .findFirst()
+                .orElse(null);
+
+        if (target == null) {
+            System.err.println("Plugin '" + targetId + "' não encontrado na lista.");
+            return;
+        }
+
+        list.getSelectionModel().select(target);
         openSelected();
     }
 
