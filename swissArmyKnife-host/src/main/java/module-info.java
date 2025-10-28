@@ -1,16 +1,14 @@
 module paradigma0621.swissarmyknife.host {
+    requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.media;
-    requires javafx.base;
-    requires javafx.graphics;
 
+    // seus módulos/próprias libs
     requires paradigma0621.swissarmyknife.api;
-
+    requires javafx.base;
     uses paradigma0621.swissarmyknife.api.ToolPlugin;
 
-    requires paradigma0621.swissarmyknife.clipboard; // CHAVE KEY DE OURO - ChatGPT não há previu, mas precisava
-
-    exports paradigma0621.swissarmyknife.host;
+    // o JavaFX usa reflexão para injetar @FXML
     opens paradigma0621.swissarmyknife.host to javafx.fxml;
+    exports paradigma0621.swissarmyknife.host;
 }

@@ -1,11 +1,15 @@
 package paradigma0621.swissarmyknife.clipboard;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
