@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+  <parent>
     <groupId>paradigma0621</groupId>
     <artifactId>swissArmyKnife-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+  </parent>
 
-  <name>SwissArmyKnife Parent</name>
-
-  <modules>
-    <module>swissArmyKnife-api</module>
-    <module>swissArmyKnife-host</module>
-    <module>swissArmyKnife-clipboard</module>
-    <module>swissArmyKnife-comparator</module>
-	<module>swissArmyKnife-scratch</module>
-  </modules>
-  
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>swissArmyKnife-comparator</artifactId>
+  <name>SwissArmyKnife Arrays Comparator</name>
+  <packaging>jar</packaging>
+    
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>25</maven.compiler.source>
-    <maven.compiler.target>25</maven.compiler.target>
     <javafx.version>23.0.2</javafx.version>
   </properties>
 
   <dependencies>
+      <dependency>
+          <groupId>paradigma0621</groupId>
+          <artifactId>swissArmyKnife-api</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+
       <dependency>
           <groupId>org.openjfx</groupId>
           <artifactId>javafx-fxml</artifactId>
@@ -66,20 +65,12 @@
       </dependency>
   </dependencies>
 
-  <build>
-    <pluginManagement>
-      <plugins>
-         <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-	  <version>3.0.0-M5</version>
-        </plugin>
-
-      </plugins>
-    </pluginManagement>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

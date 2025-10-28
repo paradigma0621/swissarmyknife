@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="paradigma0621.swissarmyknife.comparator.ComparatorController">
+
+    <center>
+        <VBox spacing="12" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets topRightBottomLeft="12"/>
+            </padding>
+
+            <Label text="Comparar listas numéricas (A vs B) — com verificação de duplicados"
+                   style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+
+            <GridPane hgap="12" vgap="8">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="ALWAYS"/>
+                </rowConstraints>
+
+                <children>
+                    <!-- Lista A -->
+                    <VBox spacing="6" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Lista A"/>
+                        <TextArea fx:id="txtA"
+                                  promptText="Cole aqui números da lista A (um por linha, ou separados por vírgulas, espaços etc.)"
+                                  wrapText="false" prefRowCount="12"/>
+                    </VBox>
+
+                    <!-- Lista B -->
+                    <VBox spacing="6" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label text="Lista B"/>
+                        <TextArea fx:id="txtB"
+                                  promptText="Cole aqui números da lista B (um por linha, ou separados por vírgulas, espaços etc.)"
+                                  wrapText="false" prefRowCount="12"/>
+                    </VBox>
+                </children>
+            </GridPane>
+
+            <HBox spacing="8">
+                <Button fx:id="btnComparar" text="Comparar (Ctrl+Enter)"/>
+                <Button fx:id="btnLimpar" text="Limpar tudo"/>
+            </HBox>
+
+            <TitledPane text="Somente em A (A - B)" expanded="true">
+                <content>
+                    <VBox spacing="6">
+                        <padding><Insets topRightBottomLeft="10"/></padding>
+                        <Label fx:id="lblOnlyAInfo" text="0 itens"/>
+                        <TextArea fx:id="txtOnlyA" editable="false" wrapText="false" prefRowCount="6"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <TitledPane text="Somente em B (B - A)" expanded="false">
+                <content>
+                    <VBox spacing="6">
+                        <padding><Insets topRightBottomLeft="10"/></padding>
+                        <Label fx:id="lblOnlyBInfo" text="0 itens"/>
+                        <TextArea fx:id="txtOnlyB" editable="false" wrapText="false" prefRowCount="6"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <TitledPane text="Interseção (A ∩ B)" expanded="false">
+                <content>
+                    <VBox spacing="6">
+                        <padding><Insets topRightBottomLeft="10"/></padding>
+                        <Label fx:id="lblInterInfo" text="0 itens"/>
+                        <TextArea fx:id="txtInter" editable="false" wrapText="false" prefRowCount="6"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <TitledPane text="Duplicados em A" expanded="false">
+                <content>
+                    <VBox spacing="6">
+                        <padding><Insets topRightBottomLeft="10"/></padding>
+                        <Label fx:id="lblDupAInfo" text="0 valores duplicados (0 ocorrências extras)"/>
+                        <TextArea fx:id="txtDupA" editable="false" wrapText="false" prefRowCount="6"
+                                  promptText="Ex.: 42 (×3)"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <TitledPane text="Duplicados em B" expanded="false">
+                <content>
+                    <VBox spacing="6">
+                        <padding><Insets topRightBottomLeft="10"/></padding>
+                        <Label fx:id="lblDupBInfo" text="0 valores duplicados (0 ocorrências extras)"/>
+                        <TextArea fx:id="txtDupB" editable="false" wrapText="false" prefRowCount="6"
+                                  promptText="Ex.: 13 (×2)"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <HBox spacing="16">
+                <Label fx:id="lblResumo" text="Resumo: A=0 | A únicos=0 | B=0 | B únicos=0 | Únicos totais=0"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

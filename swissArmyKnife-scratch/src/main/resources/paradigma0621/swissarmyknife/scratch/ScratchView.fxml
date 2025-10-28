@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="paradigma0621.swissarmyknife.scratch.ScratchController">
+
+    <center>
+        <VBox spacing="12" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets topRightBottomLeft="12"/>
+            </padding>
+
+            <Label text="Scratch — salvar texto em scratch.txt"
+                   style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+
+            <TitledPane text="Configuração detectada" expanded="true">
+                <content>
+                    <VBox spacing="6">
+                        <padding><Insets topRightBottomLeft="10"/></padding>
+                        <Label text="Arquivo pathConfiguration.txt:"/>
+                        <TextField fx:id="txtConfigPath" editable="false"/>
+
+                        <Label text="Diretório base (resolvido):"/>
+                        <TextField fx:id="txtBaseDir" editable="false"/>
+
+                        <Label text="Arquivo de destino:"/>
+                        <TextField fx:id="txtScratchFile" editable="false"/>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <Label text="Conteúdo a salvar em scratch.txt"/>
+            <TextArea fx:id="txtContent"
+                      promptText="Digite ou cole aqui o conteúdo a ser gravado em scratch.txt"
+                      wrapText="true" prefRowCount="12"/>
+
+            <HBox spacing="8">
+                <Button fx:id="btnSave" text="Salvar (Ctrl+S)"/>
+                <Button fx:id="btnLoad" text="Carregar (Ctrl+L)"/>
+                <Button fx:id="btnClear" text="Limpar"/>
+            </HBox>
+
+            <Label fx:id="lblStatus" text="Pronto."
+                   style="-fx-font-size:11px; -fx-opacity:0.85;"/>
+        </VBox>
+    </center>
+
+</BorderPane>
+
