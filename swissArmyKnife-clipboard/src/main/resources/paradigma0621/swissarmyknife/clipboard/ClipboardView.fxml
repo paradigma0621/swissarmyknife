@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="paradigma0621.swissarmyknife.clipboard.ClipboardController"
+      spacing="10">
+    <padding>
+        <Insets topRightBottomLeft="12"/>
+    </padding>
+    <children>
+        <Label text="Copiar Senha" style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+        <TextArea fx:id="info" editable="false" wrapText="true" prefRowCount="5"/>
+        <Button fx:id="btnCopy" text="Copiar agora"/>
+    </children>
+</VBox>

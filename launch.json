@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+         {
+    "name": "caniveteSuico",
+    "type": "java",
+    "request": "launch",
+    "projectName": "caniveteSuico",
+    "args": "",
+    "cwd": "/media/paradigma0621/drive_docs/all/programacao/timeFlowSystem/new/caniveteSuico/",
+    "stopOnEntry": false,
+    "host": "localhost",
+	    "mainClass": "groupId.artifactId.MainApp",
+	    "console": "internalConsole",
+    "modulePaths": [],
+    "classPaths": ["/home/lucas/Documentos/xadrez/java/xadrezQueEstaValendo-16.9/artifactId/target/classes",
+		   "/home/lucas/Documentos/xadrez/java/javafx-sdk-21.0.1/lib/javafx.controls.jar",
+  		   "/home/lucas/Documentos/xadrez/java/javafx-sdk-21.0.1/lib/javafx.fxml.jar",
+  		   "/home/lucas/Documentos/xadrez/java/javafx-sdk-21.0.1/lib/javafx.base.jar",
+  		   "/home/lucas/Documentos/xadrez/java/javafx-sdk-21.0.1/lib/javafx.graphics.jar",
+    		   "/home/lucas/Documentos/xadrez/java/xadrezQueEstaValendo-16.9/artifactId/libs/ictk.jar"
+		  ],
+             "vmArgs": "--module-path /home/lucas/Documentos/xadrez/java/javafx-sdk-21.0.1/lib --add-modules javafx.controls,javafx.fxml,javafx.base,javafx.graphics,ictk",
+            "externalConsole": true
+        }
+]
+}   
+
+
+
