@@ -6,6 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="paradigma0621.swissarmyknife.clipboard.ClipboardController"
+      fx:id="root"
       spacing="10">
     <padding>
         <Insets topRightBottomLeft="12"/>
@@ -13,6 +14,7 @@
     <children>
         <Label text="Copiar Senha" style="-fx-font-size:16px; -fx-font-weight:bold;"/>
         <TextArea fx:id="info" editable="false" wrapText="true" prefRowCount="5"/>
-        <Button fx:id="btnCopy" text="Copiar agora"/>
+        <Button fx:id="btnCopy" text="Copiar agora" />
+        <Label text="Dica: pressione CTRL + P para copiar a senha." style="-fx-font-size:11px; -fx-opacity:0.8;"/>
     </children>
 </VBox>
