@@ -70,8 +70,8 @@ public class MainController {
         // Ordem fixa:
         List<String> pluginsOrder = List.of(
                 "clipboard",
-                "comparator",
-                "scratch"
+                "scratch",
+                "comparator"
         );
 
         plugins.sort(Comparator.comparingInt(p ->
@@ -183,7 +183,7 @@ public class MainController {
 
 
     private void openScratchItem() {
-        // queremos abrir especificamente o plugin "clipboard"
+        // queremos abrir especificamente o plugin "scratch"
         String targetId = "scratch";
 
         ToolEntry target = list.getItems()
@@ -201,44 +201,24 @@ public class MainController {
         openSelected();
     }
 
-    // (Opcional) abrir diretamente por ID conhecido (caso não queira depender da ordem)
-    // Ex.: openById("paradigma0621.swissarmyknife.clipboard");
-    private void openById(String id) {
-        int idx = -1;
-        for (int i = 0; i < list.getItems().size(); i++) {
-            if (list.getItems().get(i).id().equals(id)) { idx = i; break; }
-        }
-        if (idx >= 0) {
-            list.getSelectionModel().select(idx);
-            openSelected();
-        }
-    }
-
     // pequeno DTO para a lista
     private record ToolEntry(String id, String name) {}
 
-    // Se tiver um onKeyPressed no FXML, pode deixar vazio para não conflitar com o accelerator:
     @FXML
     public void onKeyPressed() {
         root.addEventHandler(KeyEvent.KEY_RELEASED, key -> {
             if (!isDebouncing) {
                 isDebouncing = true;
-                boolean showCtrlMessage = true;
 
-                if (key.isControlDown() || key.getCode().equals(KeyCode.CONTROL)) {
+              /*  if (key.isControlDown() || key.getCode().equals(KeyCode.CONTROL)) {
                     if ((key.getCode() == key.getCode().LEFT)) {
                         System.out.println("You pressed left arrow...");
-                    }
-                    if (key.getCode() == key.getCode().RIGHT) {
-                        System.out.println("You pressed right arrow...");
                     }
 
                     if (key.getCode() == KeyCode.S) {
                         System.out.println("pressionou CTRL + S");
                     }
-
-
-                }
+                }*/
                 debounceTimeline.playFromStart();
             }
 
