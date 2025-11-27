@@ -118,6 +118,11 @@ public class MainController {
                         new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN),
                         this::openScratchItem
                 );
+
+                newScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.Q, KeyCombination.CONTROL_DOWN),
+                        this::openDialogBox
+                );
             }
         });
     }
@@ -222,6 +227,22 @@ public class MainController {
                 debounceTimeline.playFromStart();
             }
 
+        });
+    }
+
+
+    private void openDialogBox() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.getDialogPane().setStyle("-fx-font-size: 58px;");
+        dialog.setTitle("Entrada de texto");
+        dialog.setHeaderText("Digite algo:");
+        dialog.setContentText("Valor:");
+
+
+        Optional<String> resultado = dialog.showAndWait();
+
+        resultado.ifPresent(valor -> {
+            System.out.println("Você digitou: " + valor);
         });
     }
 }
